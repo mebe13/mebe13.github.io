@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Experiencia & Proyectos | Robert Mebe</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg-dark:#0A1428;
+  --bg-mid:#0F2A44;
+  --blue-soft:#1E3A5F;
+  --blue-accent:#3A7AFE;
+  --text-main:#E6EBF2;
+  --text-muted:#B8C4D6;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  font-family:"Inter",sans-serif;
+  background:linear-gradient(180deg,var(--bg-dark),var(--bg-mid));
+  color:var(--text-main);
+  line-height:1.6;
+}
+
+a{color:inherit;text-decoration:none;}
+
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:0 24px;
+}
+
+/* ================= NAV ================= */
+.nav{
+  position:fixed;
+  top:0;left:0;width:100%;
+  background:rgba(10,20,40,.75);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(255,255,255,.06);
+  z-index:1000;
+}
+.nav-container{
+  max-width:1200px;
+  margin:auto;
+  padding:16px 24px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.nav-logo{font-weight:600;}
+.nav-actions{display:flex;gap:24px;align-items:center;}
+.nav-link{color:var(--text-muted);font-size:.9rem;}
+.nav-link:hover{color:#fff;}
+.nav-cta{
+  background:rgba(58,122,254,.15);
+  border:1px solid rgba(58,122,254,.45);
+  padding:10px 18px;
+  border-radius:999px;
+  font-size:.85rem;
+}
+.nav-cta:hover{background:var(--blue-accent);color:#fff;}
+
+/* ================= HEADER ================= */
+header{
+  position:relative;
+  padding:180px 0 100px;
+  text-align:center;
+  overflow:hidden;
+}
+header h1, header p{
+  position:relative;
+  z-index:1;
+}
+header h1{
+  font-size:clamp(2.2rem,4vw,3rem);
+  margin-bottom:16px;
+}
+header p{
+  color:var(--text-muted);
+  max-width:720px;
+  margin:auto;
+  margin-top:24px;
+}
+
+/* Canvas plexus */
+#plexus {
+  position: absolute;
+  top:50%;
+  left:50%;
+  width:100%;
+  height:100%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index:0;
+}
+
+/* ================= SHOWCASE ================= */
+.showcase{
+  padding:100px 0 140px;
+}
+
+.section-title{
+  font-size:2rem;
+  margin-bottom:16px;
+}
+
+.section-sub{
+  color:var(--text-muted);
+  max-width:720px;
+  margin-bottom:64px;
+}
+
+.showcase-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:28px;
+}
+
+.showcase-item{
+  position:relative;
+  border-radius:22px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.08);
+  background:#000;
+}
+
+.showcase-item img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:.6s ease;
+}
+
+/* Zoom */
+.showcase-item.zoom-x15 img{
+  transform:scale(1.25);
+  object-position:50% 20%;
+}
+
+.showcase-item:hover img{
+  transform:scale(1.35);
+}
+
+/* Overlay */
+.showcase-overlay{
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  padding:24px;
+  background:linear-gradient(
+    180deg,
+    transparent,
+    rgba(10,20,40,.9)
+  );
+  opacity:0;
+  transition:.4s;
+}
+
+.showcase-item:hover .showcase-overlay{
+  opacity:1;
+}
+
+.showcase-overlay span{
+  font-size:.7rem;
+  letter-spacing:.12em;
+  color:var(--text-muted);
+  text-transform:uppercase;
+}
+
+.showcase-overlay strong{
+  font-size:1.1rem;
+  margin-top:6px;
+}
+
+/* Play icon para video */
+.video-item::after{
+  content:"▶";
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-items:center;
+  font-size:3rem;
+  color:#fff;
+  opacity:.85;
+  transition:.3s;
+}
+
+.video-item:hover::after{
+  transform:scale(1.1);
+  opacity:1;
+}
+
+/* ================= FOOTER ================= */
+footer{
+  text-align:center;
+  padding:40px 0;
+  font-size:.85rem;
+  color:var(--text-muted);
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo">Robert Mebe</a>
+    <div class="nav-actions">
+      <a href="index.html" class="nav-link">Inicio</a>
+      <a href="experiencia.html" class="nav-link">Experiencia</a>
+      <a href="index.html#contacto" class="nav-cta">Agendar llamada</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<header>
+  <div class="container">
+    <h1>Experiencia visual & proyectos</h1>
+
+    <!-- Canvas Plexus -->
+    <canvas id="plexus"></canvas>
+
+    <p>
+      Selección de trabajos en branding, social media,
+      diseño gráfico y comunicación visual.
+    </p>
+  </div>
+</header>
+
+<!-- SHOWCASE -->
+<main class="showcase">
+  <div class="container">
+
+    <h2 class="section-title">Proyectos destacados</h2>
+    <p class="section-sub">
+      Diseño estratégico aplicado a marcas, productos y experiencias reales.
+    </p>
+
+    <div class="showcase-grid">
+
+      <!-- SOCIAL MEDIA -->
+      <a href="https://mebe13.art/secure1362022/images/insta.webp" target="_blank" class="showcase-item">
+        <img src="https://mebe13.art/secure1362022/images/insta.webp" alt="Epson Social Media">
+        <div class="showcase-overlay">
+          <span>Social Media</span>
+          <strong>Epson</strong>
+        </div>
+      </a>
+
+      <!-- VIDEO -->
+      <a href="https://www.youtube.com/watch?v=qaQlKwN28Bk" target="_blank"
+         class="showcase-item video-item zoom-x15">
+        <img src="https://mebe13.art/secure1362022/images/cif2016.webp" alt="CIF 2016">
+        <div class="showcase-overlay">
+          <span>Branding · Motion</span>
+          <strong>CIF 2016 Dream</strong>
+        </div>
+      </a>
+
+      <!-- FLYER -->
+      <a href="https://mebe13.art/secure1362022/images/arlequin.webp" target="_blank" class="showcase-item">
+        <img src="https://mebe13.art/secure1362022/images/arlequin.webp" alt="Celebra Digital">
+        <div class="showcase-overlay">
+          <span>Flyer digital</span>
+          <strong>Celebra Digital</strong>
+        </div>
+      </a>
+
+      <!-- DRONEX -->
+      <a href="https://mebe13.art/secure1362022/images/dronex.webp" target="_blank"
+         class="showcase-item zoom-x15">
+        <img src="https://mebe13.art/secure1362022/images/dronex.webp" alt="Dronex">
+        <div class="showcase-overlay">
+          <span>Branding</span>
+          <strong>Dronex</strong>
+        </div>
+      </a>
+
+      <!-- INVITACION -->
+      <a href="https://mebe13.art/secure1362022/images/invit.webp" target="_blank" class="showcase-item">
+        <img src="https://mebe13.art/secure1362022/images/invit.webp" alt="Invitación">
+        <div class="showcase-overlay">
+          <span>Diseño</span>
+          <strong>Invitación impresa & digital</strong>
+        </div>
+      </a>
+
+      <!-- PACKAGING -->
+      <a href="https://mebe13.art/secure1362022/images/ARTICHOKE-CAJA-VIALES.webp" target="_blank"
+         class="showcase-item">
+        <img src="https://mebe13.art/secure1362022/images/ARTICHOKE-CAJA-VIALES.webp" alt="Artichoke">
+        <div class="showcase-overlay">
+          <span>Packaging</span>
+          <strong>Artichoke</strong>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+© 2025 Robert Mebe — Diseño Estratégico & UX
+</footer>
+
+<script>
+// Plexus effect
+const canvas = document.getElementById('plexus');
+const ctx = canvas.getContext('2d');
+
+let width = canvas.width = window.innerWidth;
+let height = canvas.height = window.innerHeight;
+
+const points = [];
+const POINT_COUNT = 50;
+const MAX_DIST = 150;
+
+function random(min, max) {
+  return Math.random() * (max - min) + min;
+}
+
+// Crear puntos
+for(let i = 0; i < POINT_COUNT; i++){
+  points.push({
+    x: random(0, width),
+    y: random(0, height),
+    vx: random(-0.5, 0.5),
+    vy: random(-0.5, 0.5)
+  });
+}
+
+// Animación
+function animate() {
+  ctx.clearRect(0,0,width,height);
+
+  // Dibujar líneas entre puntos cercanos
+  for(let i=0; i<points.length; i++){
+    const p1 = points[i];
+    for(let j=i+1; j<points.length; j++){
+      const p2 = points[j];
+      const dx = p1.x - p2.x;
+      const dy = p1.y - p2.y;
+      const dist = Math.sqrt(dx*dx + dy*dy);
+      if(dist < MAX_DIST){
+        ctx.strokeStyle = `rgba(58,122,254,${1 - dist/MAX_DIST})`;
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(p1.x, p1.y);
+        ctx.lineTo(p2.x, p2.y);
+        ctx.stroke();
+      }
+    }
+  }
+
+  // Dibujar puntos
+  points.forEach(p => {
+    ctx.fillStyle = '#3A7AFE';
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, 2, 0, Math.PI*2);
+    ctx.fill();
+
+    // Mover puntos
+    p.x += p.vx;
+    p.y += p.vy;
+
+    // Rebote en bordes
+    if(p.x < 0 || p.x > width) p.vx *= -1;
+    if(p.y < 0 || p.y > height) p.vy *= -1;
+  });
+
+  requestAnimationFrame(animate);
+}
+
+animate();
+
+// Ajuste en resize
+window.addEventListener('resize', () => {
+  width = canvas.width = window.innerWidth;
+  height = canvas.height = window.innerHeight;
+});
+</script>
+
+</body>
+</html>

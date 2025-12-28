@@ -1,0 +1,511 @@
+@import url("https://fonts.googleapis.com/css2?family=Odor+Mean+Chey&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+$z-value: calc(-30 * var(--length));
+$shadow: hsl(0deg, 0%, 0%, 0.75);
+$enlighted: hsl(0deg, 0%, 100%, 0.15);
+$spinner-color: whitesmoke;
+$spinner-frame-color: hsl(41deg, 96%, 59%);
+$machine-color: hsl(260deg, 100%, 15%);
+$machine-footer-color: hsl(260deg, 90%, 10%);
+$machine-bg: hsl(260deg, 20%, 30%);
+$text-color: #d3342e;
+$bulb-color: hsl(41deg, 96%, 59%);
+$btn-text-shadow: hsl(0deg, 0%, 0%, 0.5);
+$btn-text-width: 1px;
+$bgcolor: radial-gradient(circle at center, hsl(60deg, 100%, 95%), hsl(230deg, 40%, 30%));
+$suncol1: hsl(41deg, 96%, 59%);
+$suncol2: hsl(49deg, 97%, 70%);
+
+:root {
+    --length: min(0.9vw, 0.55vh);
+    --radius: min(1.8vw, 1.1vh);
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    background: $bgcolor;
+    display: grid;
+    place-content: center;
+    overflow: hidden;
+}
+
+.container {
+    width: calc(80 * var(--length));
+    aspect-ratio: 2/3;
+}
+
+.slot-machine {
+    height: 100%;
+    width: 100%;
+    background: $machine-bg;
+    display: grid;
+    border-radius: var(--radius) var(--radius) 0 0;
+    grid-template-rows: 1fr 2fr 1.5fr;
+    grid-template-areas:
+        "top"
+        "middle"
+        "bottom";
+}
+
+.slot-machine-top {
+    grid-area: top;
+    position: relative;
+    height: 97.5%;
+    background: $machine-color;
+    border-radius: var(--radius);
+
+    .bulb-container {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .top-bulb {
+        left: 5%;
+        width: 90%;
+        top: 0.5%;
+    }
+
+    .bottom-bulb {
+        left: 5%;
+        width: 90%;
+        bottom: 0.5%;
+    }
+
+    .left-bulb {
+        flex-direction: column;
+        width: 5%;
+        height: 100%;
+        left: 0.5%;
+    }
+
+    .right-bulb {
+        flex-direction: column;
+        width: 5%;
+        height: 100%;
+        right: 0.5%;
+    }
+
+    .bulb {
+        font-size: calc(2.5 * var(--length));
+        color: $bulb-color;
+        text-shadow: calc(-0.2 * var(--length)) calc(-0.2 * var(--length)) calc(1 * var(--length)) #fff,
+            calc(0.2 * var(--length)) calc(0.2 * var(--length)) calc(1 * var(--length)) #fff,
+            0 0 calc(0.5 * var(--length)) $bulb-color, 0 0 calc(1 * var(--length)) $bulb-color,
+            0 0 calc(1.5 * var(--length)) $bulb-color, 0 0 calc(2 * var(--length)) $bulb-color,
+            0 0 calc(2.5 * var(--length)) $bulb-color;
+    }
+
+    .machine-title {
+        position: absolute;
+        width: calc(70 * var(--length));
+        height: calc(17.5 * var(--length));
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-family: "Odor Mean Chey", serif;
+        display: grid;
+        place-content: center;
+        color: $text-color;
+        font-size: calc(12.5 * var(--length));
+        font-weight: bolder;
+        letter-spacing: calc(1.5 * var(--length));
+        border-radius: inherit;
+        background: #222;
+    }
+
+    .jackpot {
+        text-shadow: calc(-0.2 * var(--length)) calc(-0.2 * var(--length)) calc(1 * var(--length)) #fff,
+            calc(0.2 * var(--length)) calc(0.2 * var(--length)) calc(1 * var(--length)) #fff,
+            0 0 calc(1 * var(--length)) $text-color, 0 0 calc(2 * var(--length)) $text-color,
+            0 0 calc(3 * var(--length)) $text-color, 0 0 calc(4 * var(--length)) $text-color,
+            0 0 calc(5 * var(--length)) $text-color;
+    }
+}
+
+.slot-machine-middle {
+    grid-area: middle;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: calc(5 * var(--length));
+    border-radius: var(--radius);
+    background: $machine-color;
+
+    .spinner-frame {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+        height: 80%;
+        background: $spinner-frame-color;
+        border-radius: var(--radius);
+
+        &::after {
+            content: "";
+            position: absolute;
+            height: 77.5%;
+            width: 82.5%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: inherit;
+            background: $machine-color;
+        }
+    }
+
+    .spinner-shape {
+        $val1: 58.5deg;
+        $val2: 121.5deg;
+        $val3: 238.5deg;
+        $val4: 301.5deg;
+
+        $col1: hsl(0, 0%, 45%);
+        $col2: hsl(0, 0%, 55%);
+
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 65%;
+        height: 60%;
+        background: conic-gradient($col1 $val1, $col2 $val1 $val2, $col1 $val2 $val3, $col2 $val3 $val4, $col1 $val4);
+        border-radius: var(--radius);
+
+        &::before {
+            content: "";
+            position: absolute;
+            height: 90%;
+            width: 90%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: $machine-color;
+        }
+    }
+
+    .spinners-container {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        height: 50%;
+        width: 60%;
+        overflow: hidden;
+
+        .overlay {
+            position: absolute;
+            height: 100%;
+            width: 30%;
+            border: 2px solid black;
+            background: linear-gradient($shadow, $enlighted 33%, $enlighted 66%, $shadow);
+        }
+
+        .spinner-container {
+            width: 30%;
+            height: 100%;
+            display: grid;
+            place-content: center;
+            background: $spinner-color;
+
+            .spinner {
+                position: relative;
+                width: 100%;
+                height: inherit;
+                transform-style: preserve-3d;
+                transform-origin: 50% 50% $z-value;
+                pointer-events: none;
+
+                .symbol {
+                    position: absolute;
+                    backface-visibility: hidden;
+                    height: 100%;
+                    width: 100%;
+                    font-size: calc(10 * var(--length));
+                    display: grid;
+                    place-content: center;
+                    transform-origin: 50% 50% $z-value;
+                }
+
+                @for $i from 1 through 12 {
+                    > div:nth-child(#{$i}) {
+                        transform: rotateX(30deg * $i);
+                    }
+                }
+            }
+
+            .spinner-1 {
+                transform: rotateX(var(--rot-spin));
+                transition: transform var(--rot-speed) linear;
+            }
+
+            .spinner-2 {
+                transform: rotateX(var(--rot-spin));
+                transition: transform var(--rot-speed) linear;
+            }
+
+            .spinner-3 {
+                transform: rotateX(var(--rot-spin));
+                transition: transform var(--rot-speed) linear;
+            }
+
+            &::after {
+                content: "";
+                position: absolute;
+            }
+        }
+    }
+
+    .glass-effect {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        height: 50%;
+        width: 60%;
+        border-radius: inherit;
+        background: rgba(172, 206, 199, 0.15);
+        backdrop-filter: blur(0.3px);
+        -webkit-backdrop-filter: blur(0.3px);
+    }
+}
+
+.slot-machine-bottom {
+    grid-area: bottom;
+    position: relative;
+    top: calc(-12.5 * var(--length));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    transform-style: preserve-3d;
+    perspective: calc(75 * var(--length));
+
+    .button-container {
+        position: relative;
+        width: 100%;
+        height: 60%;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        transform-origin: top;
+        transform: translateY(calc(2.5 * var(--length))) rotateX(30deg);
+        background: linear-gradient(transparent 90%, $machine-footer-color), $machine-color;
+        transform-style: preserve-3d;
+        border-top: 2px solid black;
+
+        button {
+            --btn-bottom: 12.5%;
+
+            position: relative;
+            background-color: #222;
+            cursor: pointer;
+            width: 40%;
+            height: 75%;
+            font-size: calc(10 * var(--length));
+            border: none;
+            top: 0;
+            border-radius: calc(7.5 * var(--length));
+
+            &:nth-child(1) {
+                background: radial-gradient(
+                        circle at 35% 40%,
+                        hsl(60deg, 100%, 75%, 0.75) 5%,
+                        hsl(0deg, 0%, 20%, 0) 50%
+                    ),
+                    radial-gradient(circle at 65% 40%, hsl(60deg, 100%, 75%, 0.75) 5%, hsl(0deg, 0%, 20%, 0) 50%),
+                    hsl(120deg, 100%, 10%);
+            }
+
+            &:nth-child(2) {
+                background: radial-gradient(
+                        circle at 35% 40%,
+                        hsl(60deg, 100%, 75%, 0.75) 5%,
+                        hsl(0deg, 0%, 20%, 0) 50%
+                    ),
+                    radial-gradient(circle at 65% 40%, hsl(60deg, 100%, 75%, 0.75) 5%, hsl(0deg, 0%, 20%, 0) 50%),
+                    hsl(348, 83%, 32%);
+            }
+
+            &::before {
+                font-family: "Odor Mean Chey", serif;
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                border-radius: inherit;
+                left: 0;
+                color: hsl(0, 0%, 100%, 0.9);
+                text-shadow: 1 * $btn-text-width 1 * $btn-text-width 0 $btn-text-shadow,
+                    1 * $btn-text-width -1 * $btn-text-width 0 $btn-text-shadow,
+                    -1 * $btn-text-width 1 * $btn-text-width 0 $btn-text-shadow,
+                    -1 * $btn-text-width -1 * $btn-text-width 0 $btn-text-shadow,
+                    1 * $btn-text-width 0 * $btn-text-width 0 $btn-text-shadow,
+                    0 * $btn-text-width 1 * $btn-text-width 0 $btn-text-shadow,
+                    -1 * $btn-text-width 0 * $btn-text-width 0 $btn-text-shadow,
+                    0 * $btn-text-width -1 * $btn-text-width 0 $btn-text-shadow;
+                display: grid;
+                place-content: center;
+            }
+
+            &:nth-child(1)::before {
+                content: "SPIN";
+                bottom: var(--btn-bottom);
+                left: calc(-0.5 * var(--length));
+                background: radial-gradient(circle at 27.5%, hsl(60deg, 100%, 75%, 0.75) 5%, hsl(0deg, 0%, 20%, 0) 50%),
+                    radial-gradient(circle at 72.5%, hsl(60deg, 100%, 75%, 0.75) 5%, hsl(0deg, 0%, 20%, 0) 50%),
+                    hsl(120deg, 100%, 25%);
+            }
+
+            &:nth-child(2)::before {
+                content: "STOP";
+                bottom: var(--btn-bottom);
+                left: calc(0.5 * var(--length));
+                background: radial-gradient(circle at 27.5%, hsl(60deg, 100%, 75%, 0.75) 5%, hsl(0deg, 0%, 20%, 0) 50%),
+                    radial-gradient(circle at 72.5%, hsl(60deg, 100%, 75%, 0.75) 5%, hsl(0deg, 0%, 20%, 0) 50%),
+                    hsl(348, 83%, 47%);
+            }
+        }
+    }
+
+    .slot-machine-footer {
+        position: absolute;
+        width: 100%;
+        height: 150%;
+        background: $machine-footer-color;
+        transform-origin: top;
+        transform: translateY(100%) rotateX(-30deg);
+        bottom: 0;
+
+        .casino-name {
+            $val1: 25deg;
+            $val2: 60deg;
+            $val3: 80deg;
+            $val4: 95deg;
+            $val5: 115deg;
+            $val6: 140deg;
+            $val7: 190deg;
+            $val8: 225deg;
+            $val9: 250deg;
+            $val10: 265deg;
+            $val11: 280deg;
+            $val12: 295deg;
+            $val13: 315deg;
+            $val14: 340deg;
+
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 75%;
+            height: 50%;
+            display: grid;
+            place-content: center;
+
+            font-family: "Odor Mean Chey", serif;
+            display: grid;
+            place-content: center;
+            color: $text-color;
+            font-size: calc(7.5 * var(--length));
+            font-weight: bolder;
+            letter-spacing: calc(0.75 * var(--length));
+
+            background: radial-gradient(circle at 25%, hsl(60deg, 100%, 75%, 0.75) 5%, hsl(0deg, 0%, 20%, 0) 50%),
+                radial-gradient(circle at 75%, hsl(60deg, 100%, 75%, 0.75) 5%, hsl(0deg, 0%, 20%, 0) 50%),
+                conic-gradient(
+                    $suncol1 $val1,
+                    $suncol2 $val1 $val2,
+                    $suncol1 $val2 $val3,
+                    $suncol2 $val3 $val4,
+                    $suncol1 $val4 $val5,
+                    $suncol2 $val5 $val6,
+                    $suncol1 $val6 $val7,
+                    $suncol2 $val7 $val8,
+                    $suncol1 $val8 $val9,
+                    $suncol2 $val9 $val10,
+                    $suncol1 $val10 $val11,
+                    $suncol2 $val11 $val12,
+                    $suncol1 $val12 $val13,
+                    $suncol2 $val13 $val14,
+                    $suncol1 $val14
+                );
+            border-radius: var(--radius);
+        }
+    }
+}
+
+
+
+/* signature */
+
+.signature {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+}
+
+.link {
+	position: absolute;
+	z-index: 10;
+	left: calc(5vmin - 1rem);
+	bottom: calc(5vmin - 1rem);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+
+	span {
+		font-size: 2rem;
+		font-family: arial, sans-serif;
+		color: whitesmoke;
+	}
+
+	.my-name {
+		position: relative;
+	}
+
+	.before,
+	.after {
+		overflow: hidden;
+		width: 0px;
+		transition: width 0.5s;
+		transform-origin: right;
+	}
+
+	.before-text {
+		display: inline-block;
+		width: auto;
+		text-align: right;
+	}
+
+	.after-text {
+		display: flex;
+		align-items: center;
+		width: auto;
+		height: 3rem;
+		transform-origin: top center;
+	}
+
+	&:hover .before {
+		width: 3.5rem;
+	}
+
+	&:hover .after {
+		width: 5rem;
+	}
+
+	&:hover .spin {
+		display: inline-block;
+		transition: 0.5s transform 0.5s ease-in-out;
+		transform: rotate(360deg);
+	}
+}

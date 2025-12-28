@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Portafolio Confidencial | BeMe</title>
+<meta content="Acceso privado al portafolio de Robert Mebe (BeMe) — Diseñador UX/UI y marketing digital." name="description"/>
+<meta content="#ff8400" name="theme-color"/>
+<link href="secure1362022/images/32icon.webp" rel="icon" type="image/png"/>
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+    background: radial-gradient(circle at center, #001020, #000);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.6s ease-in-out;
+  }
+
+  canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .lock-container {
+    z-index: 1;
+    text-align: center;
+    backdrop-filter: blur(8px);
+    background: rgba(0,0,0,0.5);
+    padding: 40px 60px;
+    border-radius: 16px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.8);
+  }
+
+  h1 {
+    margin-bottom: 20px;
+    font-weight: 600;
+    font-size: 1.8rem;
+    background: linear-gradient(90deg,#006de7,#ff8400);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  button.option-btn {
+    display: block;
+    width: 220px;
+    margin: 15px auto;
+    padding: 14px 0;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    color: #fff;
+    transition: 0.3s;
+  }
+
+  .corporate {
+    background: #006de7;
+  }
+
+  .corporate:hover {
+    background: #004bb5;
+    transform: scale(1.05);
+  }
+
+  .creative {
+    background: #ff8400;
+  }
+
+  .creative:hover {
+    background: #ff6400;
+    transform: scale(1.05);
+  }
+
+  p {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    opacity: 0.8;
+  }
+</style>
+</head>
+<body>
+<canvas id="plexusCanvas"></canvas>
+<div class="lock-container">
+  <h1>Portafolio Confidencial</h1>
+  <p>Elige tu experiencia:</p>
+  <button class="option-btn corporate" onclick="goToCorporate()">Azul Corporativo</button>
+  <button class="option-btn creative" onclick="goToCreative()">Creativo Energético</button>
+  <p>© 2025 BeMe</p>
+</div>
+
+<script>
+  function goToCorporate() {
+    document.body.style.opacity = 0;
+    setTimeout(() => window.location.href = "https://mebe13.art/blue/", 500);
+  }
+
+  function goToCreative() {
+    document.body.style.opacity = 0;
+    setTimeout(() => window.location.href = "https://mebe13.art/secure1362022/", 500);
+  }
+
+  // Efecto Plexus
+  const canvas = document.getElementById("plexusCanvas");
+  const ctx = canvas.getContext("2d");
+  let particles = [];
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  window.addEventListener("resize", resize);
+  resize();
+
+  const numParticles = 70;
+  for (let i = 0; i < numParticles; i++) {
+    particles.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      vx: (Math.random() - 0.5) * 0.6,
+      vy: (Math.random() - 0.5) * 0.6
+    });
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (let i = 0; i < particles.length; i++) {
+      const p = particles[i];
+      p.x += p.vx;
+      p.y += p.vy;
+      if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+      if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
+      ctx.fillStyle = "#fff";
+      ctx.fill();
+
+      for (let j = i + 1; j < particles.length; j++) {
+        const q = particles[j];
+        const dx = p.x - q.x;
+        const dy = p.y - q.y;
+        const dist = Math.sqrt(dx*dx + dy*dy);
+        if (dist < 110) {
+          const alpha = 1 - dist / 110;
+          const grad = ctx.createLinearGradient(p.x, p.y, q.x, q.y);
+          grad.addColorStop(0, "#006de7");
+          grad.addColorStop(1, "#ff8400");
+          ctx.strokeStyle = grad;
+          ctx.globalAlpha = alpha * 0.6;
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(q.x, q.y);
+          ctx.stroke();
+        }
+      }
+    }
+    ctx.globalAlpha = 1;
+    requestAnimationFrame(draw);
+  }
+  draw();
+</script>
+</body>
+</html>

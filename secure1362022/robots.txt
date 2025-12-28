@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://mebe13.art/sitemap.xml

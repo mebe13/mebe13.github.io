@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luxury Jewelry — Mini Brand Guide</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* ===============================
+   TOKENS + DARK MODE
+================================ */
+:root{
+  --bg:#FFFFFF;
+  --surface:#F9FAFB;
+  --text:#0B0B0B;
+  --muted:#6B7280;
+  --line:rgba(10,26,47,.18);
+
+  --gold:#C6A14A;
+
+  --d1:#0A1A2F;
+  --d2:#111827;
+  --d3:#1F2933;
+  --d4:#2B2F36;
+
+  --grad-diamante:linear-gradient(135deg,var(--d1),var(--d2),var(--d3),var(--d4));
+  --grad-gold:linear-gradient(135deg,#C6A14A,#E1C97A,#9E7C2E);
+
+  --radius:22px;
+  --shadow-soft:0 12px 30px rgba(10,26,47,.12);
+  --shadow-strong:0 30px 80px rgba(10,26,47,.35);
+}
+
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#0B0F17;
+    --surface:#111827;
+    --text:#F9FAFB;
+    --muted:#9CA3AF;
+    --line:rgba(255,255,255,.08);
+  }
+}
+
+/* ===============================
+   BASE
+================================ */
+*{box-sizing:border-box;}
+html,body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:"Anek Bangla",system-ui,sans-serif;
+  text-align:center;
+  transition:background .4s,color .4s;
+}
+.wrap{max-width:1100px;margin:auto;padding:clamp(20px,4vw,36px);}
+a{text-decoration:none;color:inherit}
+
+/* ===============================
+   TOPBAR
+================================ */
+.topbar{
+  position:sticky;top:0;z-index:50;
+  backdrop-filter:blur(16px);
+  background:color-mix(in srgb,var(--bg) 85%,transparent);
+  border-bottom:1px solid var(--line);
+}
+.topbar-inner{
+  max-width:1100px;margin:auto;
+  padding:14px clamp(18px,4vw,36px);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.brand{display:flex;gap:14px;align-items:center;}
+.brand-name{font-weight:800;letter-spacing:.04em}
+.brand-sub{font-size:.82rem;color:var(--muted)}
+
+.chip{
+  padding:8px 14px;border-radius:999px;
+  background:var(--grad-diamante);
+  color:#fff;font-weight:600;
+}
+
+/* ===============================
+   SCROLL ANIMATION SYSTEM
+================================ */
+.reveal{
+  opacity:0;
+  transform:translateY(24px) scale(.98);
+  transition:
+    opacity .9s ease,
+    transform 1s cubic-bezier(.22,.61,.36,1);
+}
+.reveal.visible{
+  opacity:1;
+  transform:none;
+}
+
+/* ===============================
+   SECTION
+================================ */
+.section{
+  padding:clamp(40px,6vw,90px) 0;
+  border-bottom:1px solid var(--line);
+}
+
+/* ===============================
+   TYPOGRAPHY
+================================ */
+h1{
+  font-size:clamp(2.6rem,5vw,3.4rem);
+  font-weight:800;
+}
+h2{
+  font-size:clamp(1.8rem,3.5vw,2.4rem);
+  font-weight:700;
+}
+h1 span{
+  background:var(--grad-gold);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+/* ===============================
+   COVER
+================================ */
+.cover{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:30px;
+  padding:clamp(32px,5vw,60px);
+  border-radius:var(--radius);
+  background:var(--surface);
+  box-shadow:var(--shadow-soft);
+}
+@media(max-width:880px){.cover{grid-template-columns:1fr;}}
+
+.cover-claim{
+  max-width:56ch;
+  margin:16px auto;
+  color:var(--muted);
+}
+
+/* ===============================
+   PREMIUM BUTTON
+================================ */
+.btn{
+  position:relative;
+  padding:14px 26px;
+  border-radius:999px;
+  font-weight:700;
+  color:#fff;
+  background:var(--grad-diamante);
+  border:none;
+  overflow:hidden;
+  cursor:pointer;
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.btn::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    120deg,
+    transparent 30%,
+    rgba(255,255,255,.35),
+    transparent 70%
+  );
+  transform:translateX(-120%);
+  transition:transform .8s ease;
+}
+.btn:hover::after{transform:translateX(120%);}
+.btn:hover{
+  transform:translateY(-3px);
+  box-shadow:var(--shadow-strong);
+}
+.btn:active{
+  transform:scale(.96);
+  box-shadow:0 10px 30px rgba(0,0,0,.4);
+}
+
+/* ===============================
+   TOKEN CARD
+================================ */
+.card{
+  background:var(--bg);
+  padding:24px;
+  border-radius:var(--radius);
+  border:1px solid var(--line);
+  box-shadow:var(--shadow-soft);
+  text-align:left;
+}
+
+/* ===============================
+   ACCESSIBILITY
+================================ */
+@media (prefers-reduced-motion: reduce){
+  *{transition:none!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <img src="https://mebe13.art/secure1362022/images/diamond-man.webp" width="54" style="border-radius:12px">
+      <div>
+        <div class="brand-name">Luxury Jewelry</div>
+        <div class="brand-sub">Masculine · Diamond Edition</div>
+      </div>
+    </div>
+    <div class="chip">Men · Luxury</div>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section class="section reveal">
+  <div class="cover">
+    <div class="reveal">
+      <h1>Designed for <span>timeless strength</span></h1>
+      <p class="cover-claim">
+        Fine jewelry and watches crafted with precision, restraint and masculine elegance.
+      </p>
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+        <button class="btn">Collections</button>
+        <button class="btn">Brand Tokens</button>
+      </div>
+    </div>
+
+    <div class="card reveal">
+      <strong>Dev-ready tokens</strong>
+      <pre style="margin-top:12px;font-size:.85rem">
+--grad-diamante
+--grad-gold
+      </pre>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script>
+/* ===============================
+   APPLE-LIKE SCROLL REVEAL
+================================ */
+const reveals = document.querySelectorAll('.reveal');
+
+const observer = new IntersectionObserver(
+  entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.15 }
+);
+
+reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

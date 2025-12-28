@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Promoción del Mes | Fiestas Premium</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Promoción del mes en invitaciones digitales e impresas. Aprovecha nuestros paquetes especiales para tu fiesta.">
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0f0f14;
+      --gold: #ffd36a;
+      --pink: #ff6fb1;
+      --text: #ffffff;
+      --muted: #b8b8c4;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at top, #1c1c2b, #0b0b12);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .promo-wrapper {
+      width: 100%;
+      max-width: 420px;
+      padding: 2rem 1.2rem;
+      text-align: center;
+    }
+
+    .promo-title {
+      font-size: 2rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, var(--gold), var(--pink));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1rem;
+    }
+
+    .promo-sub {
+      color: var(--muted);
+      font-size: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .promo-video {
+      border-radius: 26px;
+      overflow: hidden;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+      background: #000;
+      margin-bottom: 2rem;
+    }
+
+    .promo-video video {
+      width: 100%;
+      aspect-ratio: 9 / 16;
+      display: block;
+    }
+
+    .promo-cta {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .btn {
+      padding: 1rem;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: 0.3s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--pink), var(--gold));
+      color: #000;
+    }
+
+    .btn-primary:hover {
+      transform: scale(1.05);
+    }
+
+    .btn-outline {
+      border: 1px solid var(--gold);
+      color: var(--gold);
+    }
+
+    footer {
+      margin-top: 2.5rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="promo-wrapper">
+
+    <h1 class="promo-title">Promoción del Mes</h1>
+    <p class="promo-sub">
+      Paquetes especiales en invitaciones digitales e impresas.
+      Aprovecha antes de que termine el mes.
+    </p>
+
+    <div class="promo-video">
+      <!-- VIDEO 1080x1920 -->
+      <video
+        src="videos/promo-mes.mp4"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata">
+      </video>
+    </div>
+
+    <div class="promo-cta">
+      <a href="https://wa.link/nq4aaj" class="btn btn-primary">
+        Cotizar esta promoción
+      </a>
+
+      <a href="index.html" class="btn btn-outline">
+        Volver al inicio
+      </a>
+    </div>
+
+    <footer>
+      © 2025 · Fiestas Premium Personalizadas
+    </footer>
+
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luxury Jewelry — Mini Brand Guide Diamante Interactivo</title>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wdth,wght@87.5,300;87.5,400;87.5,500;87.5,600;87.5,700;87.5,800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --luxury-white:#FFFFFF;
+  --luxury-dark:#0B3D91;
+  --luxury-gold:#D4AF37;
+  --luxury-rose:#FFC0CB;
+  --luxury-lilac:#D8BFD8;
+  --luxury-cream:#FFF8E7;
+  --text-main:#0B0B0B;
+  --muted:#575757;
+  --line: rgba(11,61,145,0.15);
+
+  --diamante-1: #FF6FBF;
+  --diamante-2: #FF9FEF;
+  --diamante-3: #B35CCC;
+  --diamante-4: #F4C2F1;
+
+  --grad-diamante: linear-gradient(135deg, var(--diamante-1), var(--diamante-2), var(--diamante-3), var(--diamante-4));
+  --grad-pink-sparkle: linear-gradient(120deg, #FFB6C1, #FF69B4, #FF1493);
+  --grad-rose-gem: linear-gradient(135deg, #FFC0CB, #FF6FCF, #FFB3E6);
+  --grad-purple-crystal: linear-gradient(150deg, #D8BFD8, #DA70D6, #8A2BE2);
+  --grad-diamond-light: linear-gradient(120deg, #E6E6FA, #F0F8FF, #F5F5F5));
+
+  --radius-1:14px;
+  --radius-2:22px;
+  --shadow-1:0 10px 30px rgba(11,61,145,0.12);
+  --shadow-2:0 18px 55px rgba(11,61,145,0.14);
+}
+
+/* Global */
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;background:var(--luxury-white);color:var(--text-main);font-family:"Anek Bangla", system-ui, -apple-system, Segoe UI, sans-serif;text-align:center;transition: color .3s;}
+a{color:inherit;text-decoration:none;}
+.wrap{max-width:1100px;margin:0 auto;padding:clamp(18px,3vw,34px);text-align:center;}
+
+/* Topbar */
+.topbar{position:sticky;top:0;z-index:50;backdrop-filter:blur(10px);background:rgba(255,255,255,0.78);border-bottom:1px solid var(--line);}
+.topbar-inner{max-width:1100px;margin:0 auto;padding:12px clamp(18px,3vw,34px);display:flex;align-items:center;justify-content:center;gap:12px;font-size:1.2rem;}
+.brand{display:flex;align-items:center;gap:12px;letter-spacing:.02em;}
+.brand-mark{font-size:2.2rem;} 
+.brand-name{font-weight:800;font-size:1.15rem;color:var(--text-main);line-height:1;}
+.brand-sub{font-weight:500;color:var(--muted);font-size:.92rem;line-height:1.1;}
+.chip{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;border:1px solid var(--line);background: rgba(255,255,255,0.7);font-weight:600;color:var(--text-main);white-space:nowrap;}
+.dot{width:10px;height:10px;border-radius:999px;background:var(--diamante-1);box-shadow:0 0 0 3px rgba(255,111,191,0.18);}
+
+/* Sections */
+.section{padding: clamp(22px,4vw,46px) 0;border-bottom:1px solid var(--line);}
+.section:last-child{border-bottom:none;}
+.kicker{display:inline-flex;align-items:center;gap:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:.82rem;color:var(--text-main);}
+.kicker::before{content:"";width:24px;height:2px;border-radius:999px;background: var(--grad-diamante);}
+
+/* Headings H1–H6 */
+h1{font-size: clamp(2.1rem, 4.8vw, 3.2rem);font-weight:800;color:var(--text-main);transition: all .4s;}
+h2{font-size: clamp(1.75rem,3.5vw,2.4rem);font-weight:700;color:var(--text-main);transition: all .4s;}
+h3{font-size: clamp(1.4rem,3vw,1.8rem);font-weight:600;color:var(--luxury-rose);transition: all .4s;}
+h4{font-size: clamp(1.2rem,2.5vw,1.5rem);font-weight:600;color:var(--luxury-lilac);transition: all .4s;}
+h5{font-size: clamp(1rem,2vw,1.25rem);font-weight:500;color:var(--text-main);transition: all .4s;}
+h6{font-size: clamp(.88rem,1.5vw,1rem);font-weight:500;color:var(--muted);transition: all .4s;}
+h1:hover,h2:hover,h3:hover,h4:hover,h5:hover,h6:hover{background:var(--grad-diamante);-webkit-background-clip:text;color:transparent;}
+
+/* Cover */
+.cover{border-radius: var(--radius-2);border:1px solid var(--line);background: rgba(255,248,247,0.15);box-shadow: var(--shadow-2);padding: clamp(22px,4vw,42px);display:grid;grid-template-columns: 1fr 1fr;gap: 22px;align-items:center;justify-content:center;}
+@media (max-width: 880px){.cover{grid-template-columns:1fr;}}
+.cover-badge{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:999px;background: rgba(255,255,255,0.75);border:1px solid rgba(11,61,145,0.12);font-weight:700;color:var(--text-main);}
+.cover-badge b{background: var(--grad-diamante);-webkit-background-clip:text;color:transparent;}
+.cover-claim{font-size: clamp(1.05rem, 1.8vw, 1.25rem);color: var(--text-main);max-width: 58ch;margin:auto;}
+.cover-ctaRow{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;justify-content:center;}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border-radius:999px;padding: 12px 18px;font-weight:700;transition: transform .16s ease, box-shadow .16s ease, background .16s ease;color:#fff;cursor:pointer;user-select:none;border:1px solid transparent;background:var(--grad-diamante);}
+.btn:hover{transform:translateY(-2px);box-shadow:0 18px 48px rgba(255,111,191,0.32);}
+.cover-right{border-radius: var(--radius-2);border:1px solid rgba(11,61,145,0.14);background: rgba(255,255,255,0.72);padding: 16px;box-shadow: var(--shadow-1);text-align:left;max-width:320px;margin:auto;}
+.tokenTitle{font-weight:800;color:var(--text-main);letter-spacing:.02em;margin-bottom:8px;}
+.code{font-family: Monaco, Menlo, Consolas, monospace; background: rgba(11,61,145,0.06);border:1px solid rgba(11,61,145,0.10);border-radius: 14px;padding: 12px;font-size: .88rem;color: #0b2230;white-space: pre;overflow:auto;margin:0;position:relative;}
+.copyBtn{position:absolute;top:6px;right:6px;padding:4px 8px;background:rgba(0,0,0,0.6);color:#fff;font-size:.75rem;border-radius:6px;cursor:pointer;opacity:0.85;transition:opacity .2s;}
+.copyBtn:hover{opacity:1;}
+
+/* Gradientes */
+.gradBox{border-radius: var(--radius-1);overflow:hidden;border:1px solid var(--line);text-align:left;position:relative;transition: transform .3s;}
+.gradBox:hover{transform: translateY(-3px);}
+.gradPreview{height:80px;}
+.gradMeta{padding:8px;}
+.gradTitle{font-weight:700;margin-bottom:4px;}
+.gradNote{font-size:.9rem;color:var(--muted);}
+.gradMeta button{margin-top:4px;}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <!-- Logo JPG -->
+      <div class="brand-mark">
+        <img src="https://mebe13.art/secure1362022/images/diamond.webp" alt="Luxury Jewelry Logo" style="width:100px; height:100px; border-radius:12px; object-fit:cover;">
+      </div>
+      <div>
+        <div class="brand-name">Luxury Jewelry</div>
+        <div class="brand-sub">Mini Brand Guide · Diamante Interactivo</div>
+      </div>
+    </div>
+    <div class="chip"><span class="dot"></span> Elegant · Premium · Diamante</div>
+  </div>
+</div>
+<main class="wrap">
+
+  <!-- Cover -->
+  <section class="section">
+    <div class="cover">
+      <div>
+        <div class="cover-badge"><b>Luxury Jewelry</b> · Diamond-inspired accents</div>
+        <h1>Explore the world of fine jewelry</h1>
+        <p class="cover-claim">Set the standard for elegance, from diamonds to luxury watches.</p>
+        <div class="cover-ctaRow">
+          <a class="btn" href="#gradients">Ver Gradientes</a>
+          <a class="btn" href="#typography">Tipografía</a>
+        </div>
+      </div>
+      <div class="cover-right" id="tokens">
+        <div class="tokenTitle">Dev-ready CSS tokens</div>
+        <pre class="code" id="cssTokens">
+:root {
+  --grad-diamante: linear-gradient(135deg, #FF6FBF, #FF9FEF, #B35CCC, #F4C2F1);
+  --grad-pink-sparkle: linear-gradient(120deg, #FFB6C1, #FF69B4, #FF1493);
+  --grad-rose-gem: linear-gradient(135deg, #FFC0CB, #FF6FCF, #FFB3E6);
+  --grad-purple-crystal: linear-gradient(150deg, #D8BFD8, #DA70D6, #8A2BE2);
+  --grad-diamond-light: linear-gradient(120deg, #E6E6FA, #F0F8FF, #F5F5F5));
+}</pre>
+        <button onclick="copyTokens()" class="copyBtn">Copiar</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Typography Section -->
+  <section class="section" id="typography">
+    <div class="kicker">Tipografía</div>
+    <h2>Jerarquía de Encabezados</h2>
+    <h1>H1 - Luxury Jewelry</h1>
+    <h2>H2 - Exquisite Craftsmanship</h2>
+    <h3>H3 - Timeless Elegance</h3>
+    <h4>H4 - Elegant Details</h4>
+    <h5>H5 - Subtle Labels</h5>
+    <h6>H6 - Metadata / Small Text</h6>
+    <p>Fuente principal: Anek Bangla para títulos y cuerpos de texto, Monaco para tokens y código.</p>
+  </section>
+
+  <!-- Gradients Section -->
+  <section class="section" id="gradients">
+    <div class="kicker">Gradientes</div>
+    <h2>Diamante Gradients</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px;margin-top:12px;">
+      <div class="gradBox">
+        <div class="gradPreview" style="background:var(--grad-diamante);"></div>
+        <div class="gradMeta">
+          <div class="gradTitle">Diamante</div>
+          <div class="gradNote">Botones y acentos principales</div>
+          <button class="copyBtn" onclick="copyGradient('--grad-diamante')">Copiar CSS</button>
+        </div>
+      </div>
+      <div class="gradBox">
+        <div class="gradPreview" style="background:var(--grad-pink-sparkle);"></div>
+        <div class="gradMeta">
+          <div class="gradTitle">Pink Sparkle</div>
+          <div class="gradNote">Destellos suaves y elegantes</div>
+          <button class="copyBtn" onclick="copyGradient('--grad-pink-sparkle')">Copiar CSS</button>
+        </div>
+      </div>
+      <div class="gradBox">
+        <div class="gradPreview" style="background:var(--grad-rose-gem);"></div>
+        <div class="gradMeta">
+          <div class="gradTitle">Rose Gem</div>
+          <div class="gradNote">Gradiente romántico / femenino</div>
+          <button class="copyBtn" onclick="copyGradient('--grad-rose-gem')">Copiar CSS</button>
+        </div>
+      </div>
+      <div class="gradBox">
+        <div class="gradPreview" style="background:var(--grad-purple-crystal);"></div>
+        <div class="gradMeta">
+          <div class="gradTitle">Purple Crystal</div>
+          <div class="gradNote">Elegancia profunda y brillante</div>
+          <button class="copyBtn" onclick="copyGradient('--grad-purple-crystal')">Copiar CSS</button>
+        </div>
+      </div>
+      <div class="gradBox">
+        <div class="gradPreview" style="background:var(--grad-diamond-light);"></div>
+        <div class="gradMeta">
+          <div class="gradTitle">Diamond Light</div>
+          <div class="gradNote">Fondos suaves y delicados</div>
+          <button class="copyBtn" onclick="copyGradient('--grad-diamond-light')">Copiar CSS</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+function copyTokens() {
+  const text = document.getElementById('cssTokens').textContent;
+  navigator.clipboard.writeText(text).then(()=>alert('Tokens copiados al portapapeles!'));
+}
+function copyGradient(varName){
+  const value = getComputedStyle(document.documentElement).getPropertyValue(varName).trim();
+  navigator.clipboard.writeText(`${varName}: ${value};`).then(()=>alert(varName+' copiado al portapapeles!'));
+}
+</script>
+
+</body>
+</html>
