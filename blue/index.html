@@ -1,279 +1,400 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Roberto Medina Betancourt | CV Landing</title>
+  <meta charset="UTF-8" />
+  <title>Robert Mebe | Diseño Estratégico & UX/UI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Tipografía -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<style>
-:root {
-  --primary-color: #052a90;
-  --secondary-color: #64748B;
-  --bg-color: #F9FAFB;
-  --text-color: #111827;
-}
+  <!-- Model Viewer -->
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: 'Inter', sans-serif;
-}
+  <style>
+    :root{
+      --bg-dark:#0A1428;
+      --bg-mid:#0F2A44;
+      --blue-soft:#1E3A5F;
+      --blue-accent:#3A7AFE;
+      --text-main:#E6EBF2;
+      --text-muted:#B8C4D6;
+    }
 
-body {
-  background-color: var(--bg-color);
-  color: var(--text-color);
-}
+    *{margin:0;padding:0;box-sizing:border-box;}
 
-a { text-decoration: none; color: inherit; }
+    body{
+      font-family:"Inter",sans-serif;
+      background:linear-gradient(180deg,var(--bg-dark),var(--bg-mid));
+      color:var(--text-main);
+      line-height:1.6;
+    }
 
-.container {
-  max-width: 1000px;
-  margin: auto;
-  padding: 2rem;
-}
+    a{color:inherit;text-decoration:none;}
 
-header {
-  text-align: center;
-  padding: 3rem 1rem;
-  background-color: white;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-}
+    .container{
+      max-width:1200px;
+      margin:auto;
+      padding:0 24px;
+    }
 
-header h1 {
-  font-size: 2rem;
-  color: var(--primary-color);
-}
+    /* ================= NAV ================= */
+    .nav{
+      position:fixed;
+      top:0;left:0;
+      width:100%;
+      background:rgba(10,20,40,.75);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid rgba(255,255,255,.06);
+      z-index:1000;
+    }
 
-header h2 {
-  font-size: 1.2rem;
-  color: var(--secondary-color);
-  margin-top: 0.5rem;
-}
+    .nav-container{
+      max-width:1200px;
+      margin:auto;
+      padding:16px 24px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
 
-header p {
-  margin-top: 1rem;
-  color: var(--secondary-color);
-  line-height: 1.5;
-}
+    .nav-logo{font-weight:600;}
 
-header .btn {
-  display: inline-block;
-  margin-top: 1.5rem;
-  padding: 0.75rem 1.5rem;
-  background-color: var(--primary-color);
-  color: white;
-  border-radius: 8px;
-  font-weight: 600;
-  transition: background-color 0.3s;
-}
+    .nav-actions{
+      display:flex;
+      gap:24px;
+      align-items:center;
+    }
 
-header .btn:hover {
-  background-color: #01c7d5;
-}
+    .nav-link{
+      color:var(--text-muted);
+      font-size:.9rem;
+    }
 
-/* ICONOS HERO */
-.hero-images {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-  margin-top: 2rem;
-}
+    .nav-link:hover{color:#fff;}
 
-.hero-images div {
-  width: 220px;
-  height: 220px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  background-size: cover;
-  background-position: center;
-}
+    .nav-cta{
+      background:rgba(58,122,254,.15);
+      border:1px solid rgba(58,122,254,.45);
+      padding:10px 18px;
+      border-radius:999px;
+      font-size:.85rem;
+    }
 
-/* SECCIONES */
-section {
-  margin-top: 4rem;
-}
+    .nav-cta:hover{
+      background:var(--blue-accent);
+      color:#fff;
+    }
 
-section h3 {
-  font-size: 1.5rem;
-  color: var(--primary-color);
-  margin-bottom: 1rem;
-  text-align: center;
-}
+    /* ================= HERO ================= */
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      padding-top:90px; /* espacio menú */
+    }
 
-#about p {
-  text-align: center;
-  max-width: 700px;
-  margin: auto;
-  line-height: 1.6;
-}
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:60px;
+      align-items:center;
+    }
 
-/* EXPERIENCIA */
-.experience-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
+    .hero-content{
+      max-width:640px;
+    }
 
-.card {
-  background-color: white;
-  padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-}
+    .hero h1{
+      font-size:clamp(2.2rem,4vw,3.2rem);
+      font-weight:700;
+      letter-spacing:-0.02em;
+      margin-bottom:24px;
+      line-height:1.4;
+      animation:fadeUp .8s ease forwards;
+    }
 
-.card h4 {
-  color: var(--primary-color);
-  margin-bottom: 0.5rem;
-}
+    .hero p{
+      font-size:1.1rem;
+      color:var(--text-muted);
+      margin-bottom:40px;
+      animation:fadeUp .8s ease forwards;
+      animation-delay:.2s;
+    }
 
-.card p {
-  color: var(--secondary-color);
-  line-height: 1.4;
-}
+    .cta-group{
+      display:flex;
+      gap:16px;
+      flex-wrap:wrap;
+    }
 
-/* HABILIDADES */
-.skills {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 2rem;
-}
+    .btn-primary{
+      background:var(--blue-accent);
+      color:#fff;
+      padding:14px 28px;
+      border-radius:10px;
+      font-weight:500;
+      box-shadow:0 10px 30px rgba(58,122,254,.35);
+      transition:.3s;
+    }
 
-.skill {
-  background-color: white;
-  padding: 0.75rem 1rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-  color: var(--secondary-color);
-  font-weight: 500;
-}
+    .btn-primary:hover{
+      background:#2f64d6;
+      transform:translateY(-2px);
+    }
 
-/* BOTÓN WHATSAPP */
-.whatsapp-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-top: 2rem;
-  padding: 1rem 1.75rem;
-  background-color: #25D366;
-  color: white;
-  font-weight: 600;
-  border-radius: 10px;
-  font-size: 1rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
+    .btn-secondary{
+      border:1px solid var(--blue-soft);
+      padding:14px 28px;
+      border-radius:10px;
+      color:var(--text-muted);
+      transition:.3s;
+    }
 
-.whatsapp-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.2);
-}
+    .btn-secondary:hover{
+      border-color:var(--blue-accent);
+      color:#fff;
+    }
 
-.whatsapp-btn img {
-  width: 24px;
-  height: 24px;
-}
+    .hero-image img{
+      width:100%;
+      border-radius:22px;
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:0 40px 100px rgba(0,0,0,.55);
+      animation:heroImage 1s ease forwards;
+    }
 
-/* FOOTER */
-footer {
-  text-align: center;
-  margin: 4rem 0 2rem;
-  color: var(--secondary-color);
-  font-size: 0.9rem;
-}
-</style>
+    /* ================= SECCIONES ================= */
+    section{
+      padding:100px 0;
+    }
+
+    .section-title{
+      font-size:2rem;
+      margin-bottom:24px;
+    }
+
+    .section-sub{
+      color:var(--text-muted);
+      max-width:640px;
+      margin-bottom:64px;
+    }
+
+    /* SERVICIOS */
+    .services{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      gap:32px;
+    }
+
+    .service{
+      background:rgba(255,255,255,0.02);
+      border:1px solid rgba(255,255,255,0.05);
+      padding:32px;
+      border-radius:18px;
+      transition:.35s;
+    }
+
+    .service:hover{
+      border-color:rgba(58,122,254,0.5);
+      transform:translateY(-6px);
+    }
+
+    .service h3{margin-bottom:12px;}
+
+    .service p{
+      color:var(--text-muted);
+      font-size:.95rem;
+    }
+
+    /* PERFIL */
+    .profile-grid{
+      display:grid;
+      grid-template-columns:400px 1fr;
+      gap:60px;
+      align-items:center;
+    }
+
+    .profile-photo img{
+      width:100%;
+      border-radius:20px;
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:0 30px 80px rgba(0,0,0,.45);
+    }
+
+    .profile-content p{
+      color:var(--text-muted);
+      font-size:1.05rem;
+    }
+
+    /* CTA FINAL */
+    .final-cta{
+      text-align:center;
+      background:linear-gradient(180deg,var(--bg-mid),var(--bg-dark));
+    }
+
+    footer{
+      text-align:center;
+      padding:40px 0;
+      font-size:.85rem;
+      color:var(--text-muted);
+    }
+
+    /* ANIMACIONES */
+    @keyframes fadeUp{
+      from{opacity:0;transform:translateY(20px);}
+      to{opacity:1;transform:none;}
+    }
+
+    @keyframes heroImage{
+      from{opacity:0;transform:scale(.96);}
+      to{opacity:1;transform:scale(1);}
+    }
+
+    @media(max-width:900px){
+      .hero-grid,.profile-grid{grid-template-columns:1fr;}
+      .hero-image{margin-top:40px;}
+      .profile-photo{max-width:260px;margin:auto;}
+    }
+  </style>
 </head>
 
 <body>
 
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo">Robert Mebe</a>
+    <div class="nav-actions">
+      <a href="index.html" class="nav-link">Inicio</a>
+      <a href="https://mebe13.art/blue/experiencia.html" class="nav-link">Experiencia</a>
+      <a href="https://wa.me/525575128958?text=Hola,%20me%20gustaría%20trabajar%20contigo" 
+         class="nav-cta" 
+         target="_blank" 
+         rel="noopener noreferrer">
+        Agendar llamada
+      </a>
+    </div>
+  </div>
+</nav>
+
 <!-- HERO -->
-<header>
-  <h1>Roberto Medina Betancourt</h1>
-  <h2>Técnico en Administración de Empresas, E-commerce & Logística</h2>
-  <p>Superviso logística con precisión y puntualidad.</p>
+<header class="hero">
+  <div class="container hero-grid">
 
-  <a href="#" class="btn">Descargar CV</a>
+    <div class="hero-content">
+      <h1>
+        Diseño estratégico, tecnología y UX/UI<br>
+        para empresas orientadas a crecimiento
+      </h1>
 
-  <div class="hero-images">
-    <div style="background-image:url('https://mebe13.art/blue/webp/adm1.webp')"></div>
-    <div style="background-image:url('https://mebe13.art/blue/webp/logi1.webp')"></div>
-    <div style="background-image:url('https://mebe13.art/blue/webp/ecom1.webp')"></div>
+      <p>
+        Ayudo a líderes y equipos a convertir productos digitales
+        en activos claros, escalables y rentables.
+      </p>
+
+      <div class="cta-group">
+        <a href="https://wa.me/525575128958?text=Hola,%20me%20gustaría%20trabajar%20contigo" 
+           class="btn-primary" 
+           target="_blank" 
+           rel="noopener noreferrer">
+          Agendar llamada
+        </a>
+        <a href="https://mebe13.art/blue/experiencia.html" 
+           class="btn-secondary" 
+           target="_blank" 
+           rel="noopener noreferrer">
+          Ver experiencia
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-image">
+      <img src="https://mebe13.art/blue/webp/mex-hero.webp"
+           alt="Estrategia digital y UX">
+    </div>
+
   </div>
 </header>
 
-<div class="container">
+<!-- SERVICIOS -->
+<section>
+  <div class="container">
+    <h2 class="section-title">Qué hago</h2>
+    <p class="section-sub">
+      Diseño, estrategia y experiencia digital alineadas a objetivos de negocio.
+    </p>
 
-<!-- SOBRE MÍ -->
-<section id="about">
-  <h3>Sobre mí</h3>
-  <p>
-    Profesional en administración, e-commerce y logística con experiencia en
-    monitoreo de transportes y coordinación de operaciones, enfocado en eficiencia
-    y cumplimiento de entregas.
-  </p>
-</section>
-
-<!-- EXPERIENCIA -->
-<section id="experience">
-  <h3>Experiencia</h3>
-
-  <div class="experience-cards">
-    <div class="card">
-      <h4>Monitorista de Transportes</h4>
-      <p>Seguimiento en tiempo real, control de rutas, resolución de incidencias y reportes operativos.</p>
-    </div>
-
-    <div class="card">
-      <h4>Administración</h4>
-      <p>Control documental, apoyo administrativo y optimización de procesos internos.</p>
-    </div>
-
-    <div class="card">
-      <h4>Logística</h4>
-      <p>Planeación de rutas, control de inventarios y coordinación de entregas.</p>
+    <div class="services">
+      <div class="service">
+        <h3>UX/UI & Product Design</h3>
+        <p>Experiencias claras orientadas a conversión y uso real.</p>
+      </div>
+      <div class="service">
+        <h3>Estrategia Digital</h3>
+        <p>Diseño y marketing alineados a crecimiento.</p>
+      </div>
+      <div class="service">
+        <h3>Interfaces & Sistemas</h3>
+        <p>Diseño escalable para productos digitales.</p>
+      </div>
+      <div class="service">
+        <h3>Consultoría Creativa</h3>
+        <p>Dirección estratégica para equipos y marcas.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- HABILIDADES -->
-<section id="skills">
-  <h3>Habilidades</h3>
-  <div class="skills">
-    <div class="skill">Monitoreo de Transportes</div>
-    <div class="skill">Gestión Logística</div>
-    <div class="skill">Trabajo Remoto</div>
-    <div class="skill">Comunicación</div>
-    <div class="skill">ERP / Excel</div>
-    <div class="skill">E-commerce</div>
+<!-- MODELO 3D -->
+<section>
+  <div class="container" style="text-align:center;">
+    <h2 class="section-title">Explora el modelo 3D</h2>
+    <model-viewer src="https://cdn.tinyglb.com/models/a0519901faaa4177bbd2e7c2b2e275de.glb"
+                  alt="Modelo 3D"
+                  auto-rotate
+                  camera-controls
+    ar
+    camera-orbit="4rad 80deg 5.5m"
+    style="width:100%; max-width:600px; height:500px; margin:auto;">
+</model-viewer>
   </div>
 </section>
 
-<!-- CONTACTO -->
-<section id="contact">
-  <h3>Contacto</h3>
+<!-- PERFIL -->
+<section>
+  <div class="container profile-grid">
+    <div class="profile-photo">
+      <img src="https://mebe13.art/blue/webp/wass.webp"
+           alt="Robert Mebe">
+    </div>
+    <div class="profile-content">
+      <h2 class="section-title">Perfil profesional</h2>
+      <p>
+        Diseñador multimedia con más de 14 años de experiencia creando
+        soluciones digitales, branding y UX/UI orientado a negocio.
+      </p>
+    </div>
+  </div>
+</section>
 
-  <div style="text-align:center;">
-    <a
-      href="https://wa.me/5215512345678?text=Hola%20Roberto,%20vi%20tu%20CV%20y%20me%20gustaría%20contactarte"
-      target="_blank"
-      class="whatsapp-btn"
-    >
-      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
-      Contactar por WhatsApp
+<!-- CTA FINAL -->
+<section class="final-cta" id="contacto">
+  <div class="container">
+    <h2 class="section-title">
+      ¿Listo para llevar tu producto al siguiente nivel?
+    </h2>
+    <a href="https://wa.me/525575128958?text=Hola,%20me%20gustaría%20trabajar%20contigo" 
+       class="btn-primary" 
+       target="_blank" 
+       rel="noopener noreferrer">
+       Agendar llamada
     </a>
   </div>
 </section>
 
-</div>
-
 <footer>
-  © 2025 Roberto Medina Betancourt · Todos los derechos reservados
+© 2025 Robert Mebe — Diseño Estratégico & UX/UI
 </footer>
 
 </body>
